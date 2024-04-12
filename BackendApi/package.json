@@ -1,0 +1,28 @@
+{
+  "name": "ttf_store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon index.js"
+  },
+  "author": "Ashwanth Kumar V",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.3",
+    "nodemon": "^3.0.3",
+    "sequelize": "^6.37.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "sequelize-cli": "^6.6.2",
+    "supertest": "^6.3.4"
+  }
+}

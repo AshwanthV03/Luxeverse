@@ -1,0 +1,17 @@
+.rc-banner{
+    width: 100%;
+    height: 70vh;
+    position: relative;
+    z-index:0;
+}
+.rc-overlay{
+    width: 100%;
+    background-color: #ffffff44;
+    margin-top: -40vh;
+    position: relative;
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+
+
+    z-index: 1;
+}

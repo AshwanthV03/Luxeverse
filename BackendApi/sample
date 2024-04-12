@@ -1,0 +1,283 @@
+// models/Address.js
+
+import DataTypes  from 'sequelize';
+import sequelize from '../DB/Db.js';
+
+const Address = sequelize.define('Address', {
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false
+  },
+  state: {
+    type: DataTypes.STRING
+  },
+  city: {
+    type: DataTypes.STRING
+  },
+  area: {
+    type: DataTypes.STRING
+  },
+  landmark: {
+    type: DataTypes.STRING
+  },
+  addressLine: {
+    type: DataTypes.STRING
+  }
+});
+
+export default Address;
+// models/Cart.js
+
+import DataTypes  from 'sequelize';
+import sequelize from '../DB/Db.js';
+
+const Cart = sequelize.define('Cart', {
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false
+  },
+  productId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  qty: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1
+  }
+});
+
+export default Cart;
+// models/Category.js
+import { DataTypes } from 'sequelize';
+import sequelize from '../DB/Db.js';
+
+const Category = sequelize.define('Category', {
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  categoryTitle: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+});
+
+export default Category;
+// models/Order.js
+
+import { DataTypes } from 'sequelize';
+import sequelize from '../DB/Db.js';
+
+const Order = sequelize.define('Order', {
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false
+  },
+  sellerId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  productId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1
+  },
+  orderDate: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW
+  },
+  status: {
+    type: DataTypes.STRING,
+    defaultValue: 'orderPlaced'
+  }
+});
+
+export default Order;
+// models/Product.js
+import { DataTypes } from 'sequelize';
+import sequelize from '../DB/Db.js';
+import ProductVariant from './ProductVariant.js';
+import Review from './Review.js';
+import Category from './Category.js';
+
+const Product = sequelize.define('Product', {
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  price: {
+    type: DataTypes.FLOAT,
+    allowNull: false
+  },
+  timestamp: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW
+  }
+});
+
+// Define relationships
+Product.hasMany(ProductVariant, { foreignKey: 'productId' }); // One-to-Many relationship with ProductVariant
+Product.hasMany(Review, { foreignKey: 'productId' }); // One-to-Many relationship with Review
+Product.belongsToMany(Category, { through: 'ProductCategory', foreignKey: 'productId' }); // Many-to-Many relationship with Category
+
+export default Product;
+// models/ProductVariant.js
+import { DataTypes } from 'sequelize';
+import sequelize from '../DB/Db.js';
+
+const ProductVariant = sequelize.define('ProductVariant', {
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  colour: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  size: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
+});
+
+export default ProductVariant;
+
+// models/Review.js
+import { DataTypes } from 'sequelize';
+import sequelize from '../DB/Db.js';
+
+const Review = sequelize.define('Review', {
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  reviewerId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  reviewerName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  starNumber: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  reviewTitle: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  reviewDesc: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  timestamp: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW
+  }
+});
+
+export default Review;
+// models/User.js
+
+import  DataTypes from 'sequelize';
+import sequelize from '../DB/Db.js';
+import Address from './Address.js';
+import CartItem from './CartItem.js';
+import Order from './Order.js';
+import WishlistItem from './WishlistItem.js';
+
+const User = sequelize.define('User', {
+  userId: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  phoneNumber: {
+    type: DataTypes.STRING,
+    unique:true
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  isAdmin:{
+    type:DataTypes.BOOLEAN,
+    defaultValue: false
+  }
+});
+
+// Define relationships with explicit foreign key column names
+User.hasMany(Address, { foreignKey: 'userId' });
+User.hasMany(CartItem, { foreignKey: 'userId' });
+User.hasMany(Order, { foreignKey: 'userId' });
+User.hasMany(WishlistItem, { foreignKey: 'userId' });
+
+export default User;
+// models/WishlistItem.js
+
+import DataTypes  from 'sequelize';
+import sequelize from '../DB/Db.js';
+
+const WishlistItem = sequelize.define('WishlistItem', {
+  uuid: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false
+  },
+  productId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
+});
+
+export default WishlistItem;

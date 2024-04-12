@@ -1,0 +1,10 @@
+.cat-container{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(154, 6, 6);
+}
+.catList{
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    
+}

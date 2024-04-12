@@ -1,0 +1,67 @@
+.homeCatocontentContainer{
+    width: 35%;
+    height: 35%;
+    background-color: #ffffff;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    border-radius: 10px;
+    justify-content: space-around;
+}
+.hcc-heading{
+    margin-top: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #1a1a30;
+}
+
+/**/
+.hcc-image{
+    width: 100%;
+    height: 25vh;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    /* background-color: #c9c9c9; */
+
+
+}
+.hcc-test-titlee{
+    margin: 5px 50px;
+    justify-content: center;
+    color: black;
+    
+}
+
+.hcc-sub-image{
+    height: 80%;
+    width: 20vh;
+    margin-left: 5px;
+    margin-top: 8px;
+    object-fit: fill;
+    border-radius: 5px;
+}
+.hcc-subBox{
+    width: 100%;
+    height: 100%;
+    margin: 4px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    border-radius: 10px;
+    justify-content: space-around;
+    /* background-color: #b81717; */
+}
+.Link{
+    text-decoration: none;
+}
+.Link:visited{
+    text-decoration: none;
+}
+.hcc-test-titlee:visited{
+text-decoration: none;
+}

@@ -1,0 +1,19 @@
+.homeContainer{
+    width: 90%;
+    margin-left: 10vh;
+    margin-right: 2vh;
+    /* background-color: green; */
+    
+}
+.banner-Container{
+    height: 70vh;
+    width: 100%;
+    background-color: #3c2323;
+    z-index: 0;
+}
+.overlay{
+    width: 100%;
+    height: 40vh;
+    background-color: #fff;
+    z-index: 1;
+}

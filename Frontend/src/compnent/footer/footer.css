@@ -1,0 +1,40 @@
+.footerContainer{
+    height: 40vh;
+    background:rgb(24, 25, 36);
+    font-family: 'Oxygen', sans-serif;
+    
+}
+.showRow{
+    display: flex;
+    flex-direction: row;
+
+}
+.showCol{
+    display: flex;
+    flex-direction: column;
+
+
+}
+.bodyFont{
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+    margin-top: 30vh;
+
+}
+.HeaderFont{
+    font-size: 20px;
+    font-weight: 600;
+}
+.knowUs{
+    margin: 10vh;
+}
+.contactUs{
+    margin: 10vh;
+}
+.knowUsText{
+    margin-top: 20px;
+}
+.contactUsText{
+    margin-top: 20px;
+}

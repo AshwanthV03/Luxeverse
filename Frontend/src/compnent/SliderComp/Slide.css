@@ -1,0 +1,43 @@
+.SlideComp-s{
+    height: 45%;
+
+}
+.boxcontain-s{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.slidebox-s{
+
+    height:80%;
+    width: 15%;
+    background-color: #e8e8e8bd;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    border-radius: 15px;
+
+}
+.slideimg-s{
+    height: 80%;
+    width: 90%;
+    object-fit:contain;
+    margin-left: 12px;
+}
+.title-s{
+    margin-top: 5px;
+    font-size: 12px;
+    margin-left: 4px;
+
+}
+.price-s{
+    margin-top: 5px;
+    margin-left: 4px;
+    font-size: 12px;
+}
+.boxTitle-s{
+    font-size: 30px;
+    margin-left: 15px;
+
+}
